@@ -6,8 +6,7 @@ import Bookshelf from './Bookshelf';
 import AddButton from './AddButton';
 
 class BooksApp extends React.Component {
-  state = {
-  }
+  state = {}
 
   render() {
     return (
