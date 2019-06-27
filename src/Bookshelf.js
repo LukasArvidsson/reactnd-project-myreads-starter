@@ -1,8 +1,29 @@
 import React from 'react';
+import * as BooksAPI from './BooksAPI';
+
 
 class Bookshelf extends React.Component {
 
+    state = {
+        books: [],
+    }
+
+    componentDidMount() {
+        this.fetchBooks();
+    }
+
+
+    fetchBooks = () => {
+        return BooksAPI.getAll()
+            .then((data) => {
+                this.setState(() => ({
+                    books: data
+                }));
+            })
+    }
+
     render() {
+        console.log(this.state);
         return (
             <div className="list-books">
                 <div className="list-books-title">
