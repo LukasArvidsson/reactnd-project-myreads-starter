@@ -15,7 +15,6 @@ class BookControl extends React.Component {
         //Update book
         return BooksAPI.update(book, status)
             .then((response) => {
-                console.log(response);
                 this.setState({
                     status: status,
                 }, () => {
