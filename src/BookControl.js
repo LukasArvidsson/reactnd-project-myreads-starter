@@ -7,20 +7,20 @@ class BookControl extends React.Component {
         status: this.props.status,
     }
 
-    setStatus = (event) => {
-        this.setState({
-            status: event.target.value,
-        }, () => {
-            this.props.updateStatus(this.props.id, this.state.status);
-            this.updateBook(this.props.id, this.state.status);
-        });
-    }
+    updateBook = (event) => {
+        const id = this.props.id;
+        const status = event.target.value;
+        const book = { id: id };
 
-    updateBook = (id, status) => {
-        console.log('id, status: ' + id + ' ' + status);
-        return BooksAPI.update(id, status)
+        //Update book
+        return BooksAPI.update(book, status)
             .then((response) => {
                 console.log(response);
+                this.setState({
+                    status: status,
+                }, () => {
+                    this.props.updateStatus(id, status);
+                });
             })
     }
 
@@ -29,7 +29,7 @@ class BookControl extends React.Component {
             <div className="book-shelf-changer">
                 <select
                     value={this.state.status}
-                    onChange={(e) => this.setStatus(e)}
+                    onChange={(e) => this.updateBook(e)}
                 >
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
