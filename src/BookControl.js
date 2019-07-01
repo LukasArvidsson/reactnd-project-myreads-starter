@@ -8,6 +8,7 @@ class BookControl extends React.Component {
     }
 
     updateBook = (event) => {
+        console.log('updatebook');
         const id = this.props.id;
         const status = event.target.value;
         const book = { id: id };
@@ -15,10 +16,11 @@ class BookControl extends React.Component {
         //Update book
         return BooksAPI.update(book, status)
             .then((response) => {
+                this.props.updateStatus(response);
                 this.setState({
                     status: status,
                 }, () => {
-                    this.props.updateStatus(id, status);
+                    console.log(response);
                 });
             })
     }
