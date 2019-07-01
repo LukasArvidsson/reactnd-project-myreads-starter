@@ -7,7 +7,6 @@ import { Route } from 'react-router-dom';
 import Search from './Search';
 
 class BooksApp extends React.Component {
-  state = {}
 
   render() {
     return (
