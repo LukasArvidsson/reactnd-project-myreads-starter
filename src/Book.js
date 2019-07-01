@@ -2,7 +2,7 @@ import React from 'react';
 import BookControl from './BookControl';
 
 const Book = (props) => {
-    const book = props.book;
+    const { book, shelf } = props;
 
     return (
         <div className="book">
@@ -16,7 +16,8 @@ const Book = (props) => {
                     }}>
                 </div>
                 <BookControl
-                    status={book.shelf}
+                    status={shelf}
+                    title={book.title}
                     id={book.id}
                     updateStatus={props.updateStatus} />
             </div>

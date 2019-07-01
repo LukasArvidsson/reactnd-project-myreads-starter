@@ -4,24 +4,22 @@ import * as BooksAPI from './BooksAPI';
 class BookControl extends React.Component {
 
     state = {
-        status: this.props.status,
+        status: this.props.status, //Setting the default value
     }
 
     updateBook = (event) => {
-        console.log('updatebook');
         const id = this.props.id;
         const status = event.target.value;
         const book = { id: id };
+
+        this.setState(({
+            status: status,
+        }));
 
         //Update book
         return BooksAPI.update(book, status)
             .then((response) => {
                 this.props.updateStatus(response);
-                this.setState({
-                    status: status,
-                }, () => {
-                    console.log(response);
-                });
             })
     }
 

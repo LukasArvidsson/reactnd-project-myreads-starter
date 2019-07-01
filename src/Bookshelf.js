@@ -1,8 +1,6 @@
 import React from 'react';
 import * as BooksAPI from './BooksAPI';
 import Shelf from './Shelf';
-import { resolve } from 'path';
-
 
 class Bookshelf extends React.Component {
 
@@ -49,7 +47,7 @@ class Bookshelf extends React.Component {
             currentlyReading: currentlyReading,
             wantToRead: wantToRead,
             read: read,
-        }), () => console.log(this.state));
+        }));
     }
 
     unpackBooks = (shelf) => {
@@ -63,14 +61,12 @@ class Bookshelf extends React.Component {
     }
 
     updateBookStatus = (response) => {
-        console.log("response");
-        console.log(response);
 
         this.setState(() => ({
             currentlyReading: response.currentlyReading,
             wantToRead: response.wantToRead,
             read: response.read,
-        }), () => console.log(this.state));
+        }), () => console.log("Updating state"));
 
     }
 
