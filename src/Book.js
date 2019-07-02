@@ -1,8 +1,9 @@
 import React from 'react';
 import BookControl from './BookControl';
+import PropTypes from 'prop-types';
 
 const Book = (props) => {
-    const { book, shelf } = props;
+    const { book, status } = props;
 
     return (
         <div className="book">
@@ -16,14 +17,21 @@ const Book = (props) => {
                     }}>
                 </div>
                 <BookControl
-                    status={shelf}
+                    status={status}
                     title={book.title}
                     id={book.id}
                     updateStatus={props.updateStatus} />
             </div>
             <div className="book-title">{book.title}</div>
-            <div className="book-authors">{book.authors.join(" ")}</div>
+            <div className="book-authors">{book.authors && book.authors.join(" ")}</div>
         </div>
     )
 }
+
+Book.propTypes = {
+    book: PropTypes.object.isRequired,
+    shelf: PropTypes.string.isRequired,
+    updateStatus: PropTypes.func.isRequired,
+}
+
 export default Book;

@@ -14,7 +14,7 @@ const Shelf = (props) => {
                         <li key={book.id}>
                             <Book
                                 book={book}
-                                shelf={shelf}
+                                status={shelf}
                                 updateStatus={props.updateStatus}
                             />
                         </li>

@@ -7,7 +7,7 @@ const AddButton = (props) => {
             to='/search'
         >
             <div className="open-search">
-                <button onClick={() => console.log('boo')}>Add a book</button>
+                <button>Add a book</button>
             </div>
         </Link>
     );
