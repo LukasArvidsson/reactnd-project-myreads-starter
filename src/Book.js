@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 const Book = (props) => {
     const { book, status } = props;
 
+    const imageLink = (book.imageLinks && book.imageLinks.smallThumbnail) || '';
+
     return (
         <div className="book">
             <div className="book-top">
@@ -13,7 +15,7 @@ const Book = (props) => {
                     style={{
                         width: 128,
                         height: 193,
-                        backgroundImage: `url(${book.imageLinks.smallThumbnail})`
+                        backgroundImage: `url(${imageLink})`
                     }}>
                 </div>
                 <BookControl
@@ -30,7 +32,7 @@ const Book = (props) => {
 
 Book.propTypes = {
     book: PropTypes.object.isRequired,
-    shelf: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
     updateStatus: PropTypes.func.isRequired,
 }
 

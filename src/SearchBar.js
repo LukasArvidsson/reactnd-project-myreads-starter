@@ -9,7 +9,6 @@ class SearchBar extends React.Component {
     }
 
     handleChange = (query) => {
-        console.log(query);
         this.setState(() => ({
             value: query,
         }), this.props.search(query));

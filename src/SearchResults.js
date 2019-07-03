@@ -12,7 +12,7 @@ const SearchResults = (props) => {
                     <li key={book.id}>
                         <Book
                             book={book}
-                            status='none'
+                            status={book.shelf}
                             updateStatus={props.updateStatus}
                         />
                     </li>
@@ -24,7 +24,6 @@ const SearchResults = (props) => {
 
 SearchResults.propTypes = {
     updateStatus: PropTypes.func.isRequired,
-    books: PropTypes.array.isRequired,
 }
 
 export default SearchResults;
