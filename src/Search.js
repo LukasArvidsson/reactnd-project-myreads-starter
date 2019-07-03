@@ -3,8 +3,6 @@ import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import * as BooksAPI from './BooksAPI';
 import PropTypes from 'prop-types';
-import { throws } from 'assert';
-
 
 class Search extends React.Component {
 
