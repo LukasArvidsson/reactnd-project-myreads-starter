@@ -11,7 +11,16 @@ class SearchBar extends React.Component {
     handleChange = (query) => {
         this.setState(() => ({
             value: query,
-        }), this.props.search(query));
+        }), this.handleSearch(query));
+    }
+
+    handleSearch = (query) => {
+        if (query) {
+            this.props.search(query);
+        }
+        else {
+            this.props.resetSearch();
+        }
     }
 
     render() {
@@ -36,6 +45,7 @@ class SearchBar extends React.Component {
 
 SearchBar.propTypes = {
     search: PropTypes.func.isRequired,
+    resetSearch: PropTypes.func.isRequired,
 }
 
 export default SearchBar;

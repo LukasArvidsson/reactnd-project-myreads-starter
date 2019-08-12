@@ -19,12 +19,14 @@ class Search extends React.Component {
 
     populateBooks = (searchResults) => {
         //Updating correct status on search results
-        for (const book of searchResults) {
-            for (const item of this.props.allBooks) {
-                if (book.id === item.id) {
-                    book.shelf = item.shelf;
-                } else {
-                    book.shelf = book.shelf || 'none';
+        if (!searchResults.error) {
+            for (const book of searchResults) {
+                for (const item of this.props.allBooks) {
+                    if (book.id === item.id) {
+                        book.shelf = item.shelf;
+                    } else {
+                        book.shelf = book.shelf || 'none';
+                    }
                 }
             }
         }
@@ -35,10 +37,16 @@ class Search extends React.Component {
 
     }
 
+    resetSearch = () => {
+        this.setState(() => ({
+            searchResults: []
+        }))
+    }
+
     render() {
         return (
             <div className="search-books">
-                <SearchBar search={this.performSearch} />
+                <SearchBar search={this.performSearch} resetSearch={this.resetSearch} />
                 <SearchResults
                     books={this.state.searchResults}
                     updateStatus={this.props.updateStatus}
